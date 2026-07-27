@@ -220,6 +220,10 @@ function getSeedOverrides() {
 
 function saveSeedOverrides(overrides) {
     localStorage.setItem('zeepredict_seed_overrides', JSON.stringify(overrides));
+    // Sync to Firebase if available
+    if (typeof ZEESync !== 'undefined') {
+        ZEESync.saveToCloud([{ id: '__seed_overrides', data: overrides }]);
+    }
 }
 
 function getDeletedSeeds() {
@@ -228,6 +232,10 @@ function getDeletedSeeds() {
 
 function saveDeletedSeeds(deleted) {
     localStorage.setItem('zeepredict_deleted_seeds', JSON.stringify(deleted));
+    // Sync to Firebase if available
+    if (typeof ZEESync !== 'undefined') {
+        ZEESync.saveToCloud([{ id: '__deleted_seeds', data: deleted }]);
+    }
 }
 
 function getUserTips() {
@@ -236,6 +244,12 @@ function getUserTips() {
 
 function saveUserTips(tips) {
     localStorage.setItem('zeepredict_user_tips', JSON.stringify(tips));
+    // Sync to Firebase if available
+    if (typeof ZEESync !== 'undefined') {
+        ZEESync.saveToCloud(tips.filter(function(t) {
+            return t.id && !t.id.startsWith('seed-');
+        }));
+    }
 }
 
 // Expose public API functions
@@ -333,5 +347,39 @@ window.PredictionDB = {
             wonCount,
             avgOdds
         };
+    },
+
+    // Sync user tips from Firebase to localStorage
+    syncFromCloud: function(callback) {
+        if (typeof ZEESync === 'undefined' || !ZEEPredictFirebase.initialized) {
+            if (callback) callback(false);
+            return;
+        }
+        ZEESync.loadFromCloud(function(cloudTips) {
+            if (cloudTips && cloudTips.length > 0) {
+                // Merge cloud tips with existing (cloud wins on conflict)
+                var localTips = getUserTips();
+                var cloudIds = {};
+                cloudTips.forEach(function(t) { cloudIds[t.id] = t; });
+                
+                // Keep local tips that don't exist in cloud
+                var merged = cloudTips.slice();
+                localTips.forEach(function(t) {
+                    if (!cloudIds[t.id]) merged.push(t);
+                });
+                
+                saveUserTips(merged);
+                if (callback) callback(true);
+            } else {
+                if (callback) callback(false);
+            }
+        });
     }
 };
+
+// Initialize Firebase on page load
+(function() {
+    if (typeof initFirebase !== 'undefined') {
+        initFirebase();
+    }
+})();
