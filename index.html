@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Zeepredict - Accurate daily sports predictions for football, basketball, tennis and more. Expert betting tips with detailed analysis.">
-    <meta name="keywords" content="sports predictions, football tips, betting tips, Zeepredict, match predictions, sports analysis">
-    <meta property="og:title" content="Zeepredict - Accurate Daily Sports Predictions">
-    <meta property="og:description" content="Football, Basketball, Tennis and more. Expert analysis delivered daily.">
+    <meta name="description" content="ZeePredict (prototype) - an early-stage football prediction platform currently showing fictional sample data only.">
+    <meta name="keywords" content="sports predictions, football tips, Zeepredict">
+    <meta property="og:title" content="ZeePredict (Prototype)">
+    <meta property="og:description" content="Early-stage prototype. All content is fictional sample data.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://martinzico35-afk.github.io/myworkspace/">
-    <title>Zeepredict - Home</title>
+    <title>ZeePredict (Prototype) - Home</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="logo.jpg" type="image/jpeg">
     <style>
@@ -64,6 +64,10 @@
     </style>
 </head>
 <body>
+    <div class="demo-banner" role="note" aria-label="Prototype notice">
+        <strong>Prototype notice:</strong> ZeePredict is an early-stage prototype. Every tip, date, result and statistic on this site is <strong>fictional sample data</strong> &mdash; not real predictions.
+    </div>
+
     <header class="header">
         <h1 class="logo-text"><img src="logo.jpg" alt="Zeepredict" class="logo-img"></h1>
         <nav class="nav">
@@ -74,31 +78,38 @@
     </header>
 
     <section class="hero">
-        <h1>Accurate Daily Sports Predictions</h1>
-        <p>Football &bull; Basketball &bull; Tennis &amp; more</p>
-        <a href="predictions.html" class="btn">View Today's Predictions &rarr;</a>
+        <h1>Football Intelligence, Built for Trust</h1>
+        <p>ZeePredict is being rebuilt as a verifiable, Nigeria-first prediction platform.<br>This site is currently a prototype showing fictional sample data only.</p>
+        <a href="predictions.html" class="btn">View Sample Predictions &rarr;</a>
     </section>
 
-    <section class="features" aria-label="Platform features">
+    <section class="features" aria-label="Platform roadmap">
         <article class="feature-card">
             <div class="feature-icon">&#9917;</div>
-            <h3>Expert Analysis</h3>
-            <p>Detailed write-ups backed by stats and form analysis.</p>
+            <h3>Analysis-Driven</h3>
+            <p>Match write-ups with reasoning, form context and clear data sources &mdash; planned.</p>
         </article>
         <article class="feature-card">
             <div class="feature-icon">&#128200;</div>
-            <h3>Track Record</h3>
-            <p>Transparent win/loss stats you can verify anytime.</p>
+            <h3>Verifiable Record</h3>
+            <p>Every future prediction will be timestamped before kickoff and settled automatically. No performance claims until a public ledger exists.</p>
         </article>
         <article class="feature-card">
             <div class="feature-icon">&#127760;</div>
-            <h3>Multi-League</h3>
-            <p>Covering Premier League, La Liga, Serie A, Bundesliga &amp; more.</p>
+            <h3>Nigeria-First</h3>
+            <p>Coverage planned for European majors, NPFL, CAF competitions and West African leagues.</p>
         </article>
     </section>
 
     <footer class="site-footer">
-        <p>&copy; 2025 Zeepredict. All rights reserved.</p>
+        <p><span class="sample-badge">DEMO DATA</span> All content on this site is fictional sample data. Strictly 18+. Please gamble responsibly.</p>
+        <p class="footer-links">
+            <a href="responsible-gaming.html">Responsible Gaming</a> &middot;
+            <a href="terms.html">Terms</a> &middot;
+            <a href="privacy.html">Privacy</a> &middot;
+            <a href="contact.html">Contact</a>
+        </p>
+        <p>&copy; 2026 Zeepredict. All rights reserved.</p>
         <a class="social-link" href="https://x.com/Zeepredict" target="_blank" rel="noopener">
           <svg class="social-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
           X
@@ -109,11 +120,6 @@
         </a>
     </footer>
 
-    <!-- Firebase SDK (required for cloud sync) -->
-    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
-    <script src="firebase-config.js"></script>
-    <script src="firebase-sync.js"></script>
     <script src="utils.js"></script>
     <script src="theme.js"></script>
 </body>

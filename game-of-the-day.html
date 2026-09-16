@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Zeepredict - Game of the Day">
+    <meta name="description" content="ZeePredict (prototype) - fictional Game of the Day sample data for layout demonstration only.">
     <meta name="keywords" content="sports predictions, football tips, game of the day">
-    <meta property="og:title" content="Zeepredict - Game of the Day">
+    <meta property="og:title" content="ZeePredict (Prototype) - Game of the Day Sample">
     <meta property="og:type" content="website">
-    <title>Zeepredict - Game of the Day</title>
+    <title>ZeePredict (Prototype) - Game of the Day</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="logo.jpg" type="image/jpeg">
     <style>
@@ -111,6 +111,10 @@
     </style>
 </head>
 <body>
+    <div class="demo-banner" role="note" aria-label="Prototype notice">
+        <strong>Prototype notice:</strong> ZeePredict is an early-stage prototype. Every tip, date, result and statistic on this site is <strong>fictional sample data</strong> &mdash; not real predictions.
+    </div>
+
     <header class="header">
         <h1 class="logo-text"><img src="logo.jpg" alt="Zeepredict" class="logo-img"></h1>
         <nav class="nav">
@@ -121,8 +125,8 @@
     </header>
 
     <main class="container">
-        <h1 class="page-title">🎯 Game of the Day</h1>
-        <p class="page-subtitle">Our top pick for today - the match we're most confident about</p>
+        <h1 class="page-title">&#127919; Game of the Day (Sample)</h1>
+        <p class="page-subtitle">A fictional sample record shown for layout demonstration only &mdash; not a real tip</p>
 
         <nav class="nav-tabs">
             <a href="game-of-the-day.html" class="active">Game of Day</a>
@@ -131,11 +135,18 @@
             <a href="odds-50.html">50 Odds</a>
         </nav>
 
-        <section id="predictions-list" aria-label="Game of the day prediction"></section>
+        <section id="predictions-list" aria-label="Game of the day sample"></section>
     </main>
 
     <footer class="site-footer">
-        <p>&copy; 2025 Zeepredict. All rights reserved.</p>
+        <p><span class="sample-badge">DEMO DATA</span> All content on this site is fictional sample data. Strictly 18+. Please gamble responsibly.</p>
+        <p class="footer-links">
+            <a href="responsible-gaming.html">Responsible Gaming</a> &middot;
+            <a href="terms.html">Terms</a> &middot;
+            <a href="privacy.html">Privacy</a> &middot;
+            <a href="contact.html">Contact</a>
+        </p>
+        <p>&copy; 2026 Zeepredict. All rights reserved.</p>
         <a class="social-link" href="https://x.com/Zeepredict" target="_blank" rel="noopener">
           <svg class="social-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
           X
@@ -146,11 +157,6 @@
         </a>
     </footer>
 
-    <!-- Firebase SDK (required for cloud sync) -->
-    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
-    <script src="firebase-config.js"></script>
-    <script src="firebase-sync.js"></script>
     <script src="predictions-data.js"></script>
     <script src="utils.js"></script>
     <script src="theme.js"></script>
@@ -160,23 +166,23 @@
             var container = document.getElementById('predictions-list');
             var tips = window.PredictionDB.getTips();
             
-            // Get the first tip as game of the day (or you can filter by specific criteria)
+            // Get the first sample record for layout demonstration
             var gameOfDay = tips.length > 0 ? tips[0] : null;
 
             if (!gameOfDay) {
-                container.innerHTML = '<div class="empty-state"><p>No game of the day available yet.</p></div>';
+                container.innerHTML = '<div class="empty-state"><p>No sample record available.</p></div>';
                 return;
             }
 
             var matchDate = gameOfDay.matchDate
                 ? new Date(gameOfDay.matchDate).toLocaleString()
-                : (gameOfDay.date ? new Date(gameOfDay.date).toLocaleDateString() : 'Date not set');
+                : (gameOfDay.date ? new Date(gameOfDay.date).toLocaleDateString() : 'Sample date');
 
             var card = document.createElement('article');
             card.className = 'prediction-card';
             card.innerHTML =
                 '<div class="league">' + ZeepredictUtils.escapeHtml(gameOfDay.league || 'Unknown League') + '</div>' +
-                '<div class="match">' + ZeepredictUtils.escapeHtml(gameOfDay.match) + ' <span class="badge">TODAY\'S TOP PICK</span></div>' +
+                '<div class="match">' + ZeepredictUtils.escapeHtml(gameOfDay.match) + ' <span class="sample-badge">SAMPLE DATA</span></div>' +
                 '<div class="match-time">' + matchDate + '</div>' +
                 '<div class="prediction">Prediction: <strong>' + ZeepredictUtils.escapeHtml(gameOfDay.prediction) + '</strong></div>' +
                 '<div class="odds">Odds: ' + ZeepredictUtils.escapeHtml(gameOfDay.odds) + '</div>' +

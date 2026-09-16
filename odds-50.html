@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Zeepredict - 50+ Odds Predictions">
+    <meta name="description" content="ZeePredict (prototype) - fictional 50+ Odds sample data for layout demonstration only.">
     <meta name="keywords" content="sports predictions, football tips, 50 odds">
-    <meta property="og:title" content="Zeepredict - 50+ Odds Predictions">
+    <meta property="og:title" content="ZeePredict (Prototype) - 50+ Odds Sample">
     <meta property="og:type" content="website">
-    <title>Zeepredict - 50 Odds</title>
+    <title>ZeePredict (Prototype) - 50 Odds</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="logo.jpg" type="image/jpeg">
     <style>
@@ -118,6 +118,10 @@
     </style>
 </head>
 <body>
+    <div class="demo-banner" role="note" aria-label="Prototype notice">
+        <strong>Prototype notice:</strong> ZeePredict is an early-stage prototype. Every tip, date, result and statistic on this site is <strong>fictional sample data</strong> &mdash; not real predictions.
+    </div>
+
     <header class="header">
         <h1 class="logo-text"><img src="logo.jpg" alt="Zeepredict" class="logo-img"></h1>
         <nav class="nav">
@@ -128,8 +132,8 @@
     </header>
 
     <main class="container">
-        <h1 class="page-title">💎 50+ Odds Predictions</h1>
-        <p class="page-subtitle">Extreme odds with massive payout potential - use with caution</p>
+        <h1 class="page-title">&#128142; 50+ Odds (Sample)</h1>
+        <p class="page-subtitle">Fictional sample records with odds of 15.0 or higher, shown for layout demonstration only</p>
 
         <nav class="nav-tabs">
             <a href="game-of-the-day.html">Game of Day</a>
@@ -139,14 +143,21 @@
         </nav>
 
         <div class="high-risk-warning">
-            ⚠️ <strong>High Risk:</strong> These are extreme odds predictions. Higher odds mean lower probability of winning. Use with caution and only bet what you can afford to lose.
+            &#9888;&#65039; <strong>High Risk:</strong> Extreme odds mean very low probability. All records on this page are fictional samples. Never stake more than you can afford to lose.
         </div>
 
-        <section id="predictions-list" aria-label="50 odds predictions list"></section>
+        <section id="predictions-list" aria-label="50 odds sample list"></section>
     </main>
 
     <footer class="site-footer">
-        <p>&copy; 2025 Zeepredict. All rights reserved.</p>
+        <p><span class="sample-badge">DEMO DATA</span> All content on this site is fictional sample data. Strictly 18+. Please gamble responsibly.</p>
+        <p class="footer-links">
+            <a href="responsible-gaming.html">Responsible Gaming</a> &middot;
+            <a href="terms.html">Terms</a> &middot;
+            <a href="privacy.html">Privacy</a> &middot;
+            <a href="contact.html">Contact</a>
+        </p>
+        <p>&copy; 2026 Zeepredict. All rights reserved.</p>
         <a class="social-link" href="https://x.com/Zeepredict" target="_blank" rel="noopener">
           <svg class="social-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
           X
@@ -157,11 +168,6 @@
         </a>
     </footer>
 
-    <!-- Firebase SDK (required for cloud sync) -->
-    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
-    <script src="firebase-config.js"></script>
-    <script src="firebase-sync.js"></script>
     <script src="predictions-data.js"></script>
     <script src="utils.js"></script>
     <script src="theme.js"></script>
@@ -171,27 +177,27 @@
             var container = document.getElementById('predictions-list');
             var tips = window.PredictionDB.getTips();
             
-            // Filter for predictions with odds 15+
+            // Filter for sample records with odds 15+
             var filtered = tips.filter(function(tip) {
                 var odds = parseFloat(tip.odds);
                 return odds >= 15.0;
             });
 
             if (filtered.length === 0) {
-                container.innerHTML = '<div class="empty-state"><p>No 50+ odds predictions available yet.</p></div>';
+                container.innerHTML = '<div class="empty-state"><p>No 50+ odds sample records available.</p></div>';
                 return;
             }
 
             filtered.forEach(function(tip) {
                 var matchDate = tip.matchDate
                     ? new Date(tip.matchDate).toLocaleString()
-                    : (tip.date ? new Date(tip.date).toLocaleDateString() : 'Date not set');
+                    : (tip.date ? new Date(tip.date).toLocaleDateString() : 'Sample date');
 
                 var card = document.createElement('article');
                 card.className = 'prediction-card';
                 card.innerHTML =
                     '<div class="league">' + ZeepredictUtils.escapeHtml(tip.league || 'Unknown League') + '</div>' +
-                    '<div class="match">' + ZeepredictUtils.escapeHtml(tip.match) + ' <span class="odds-badge">50+ ODDS</span></div>' +
+                    '<div class="match">' + ZeepredictUtils.escapeHtml(tip.match) + ' <span class="odds-badge">50+ ODDS</span> <span class="sample-badge">SAMPLE DATA</span></div>' +
                     '<div class="match-time">' + matchDate + '</div>' +
                     '<div class="prediction">Prediction: <strong>' + ZeepredictUtils.escapeHtml(tip.prediction) + '</strong></div>' +
                     '<div class="odds">Odds: ' + ZeepredictUtils.escapeHtml(tip.odds) + '</div>' +
