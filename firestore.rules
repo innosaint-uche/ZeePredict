@@ -1,0 +1,11 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Browser and mobile clients receive no direct database access. The trusted
+    // backend uses Firebase Admin with narrowly scoped service-account IAM.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

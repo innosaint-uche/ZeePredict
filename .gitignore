@@ -1,6 +1,8 @@
-node_modules/
 skills/
+node_modules/
 .env
 .env.*
 !.env.example
-.DS_Store
+coverage/
+npm-debug.log*
+tmp/

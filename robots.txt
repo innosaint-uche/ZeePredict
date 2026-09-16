@@ -1,4 +1,7 @@
-# ZeePredict is in a labelled prototype state.
-# Full blocking during demo containment; revisit at Phase 2 launch.
 User-agent: *
-Disallow: /
+Allow: /
+Disallow: /admin.html
+Disallow: /archive/
+Disallow: /views/
+
+Sitemap: https://martinzico35-afk.github.io/myworkspace/sitemap.xml
