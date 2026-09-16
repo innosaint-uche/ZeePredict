@@ -1,193 +1,24 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="ZeePredict (prototype) - fictional sample predictions shown for demonstration purposes only.">
-    <meta name="keywords" content="sports predictions, football tips, Zeepredict">
-    <meta property="og:title" content="ZeePredict (Prototype) - Sample Predictions">
-    <meta property="og:description" content="All records are fictional sample data, not real predictions.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://martinzico35-afk.github.io/myworkspace/">
-    <title>ZeePredict (Prototype) - Sample Predictions</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="logo.jpg" type="image/jpeg">
-    <style>
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-        .prediction-card {
-            background: var(--bg-secondary);
-            border-radius: 12px;
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-            border: 1px solid var(--border);
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-        .prediction-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-        }
-        .prediction-card .league {
-            color: #60a5fa;
-            font-size: 0.9rem;
-            font-weight: 600;
-        }
-        .light-mode .prediction-card .league {
-            color: #3b82f6;
-        }
-        .prediction-card .match {
-            font-size: 1.3rem;
-            font-weight: bold;
-            margin: 0.5rem 0;
-        }
-        .prediction-card .prediction {
-            color: var(--success);
-            font-size: 1.1rem;
-        }
-        .prediction-card .odds {
-            color: var(--warning);
-        }
-        .prediction-card .writeup {
-            margin-top: 1rem;
-            line-height: 1.6;
-            color: var(--text-muted);
-        }
-        .prediction-card .match-time {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            margin-top: 8px;
-        }
-        .empty-state {
-            text-align: center;
-            color: var(--text-muted);
-            padding: 4rem 1rem;
-        }
-        .empty-state p { font-size: 1.1rem; margin-bottom: 1rem; }
-
-        .page-title {
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
-        }
-        .page-subtitle {
-            color: var(--text-muted);
-            margin-bottom: 2rem;
-        }
-        .nav-tabs {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 2rem;
-            border-bottom: 2px solid var(--border);
-            flex-wrap: wrap;
-        }
-        .nav-tabs a {
-            padding: 1rem 1.5rem;
-            text-decoration: none;
-            color: var(--text-muted);
-            border-bottom: 3px solid transparent;
-            transition: all 0.3s;
-            font-weight: 500;
-        }
-        .nav-tabs a:hover {
-            color: var(--accent);
-        }
-        .nav-tabs a.active {
-            color: var(--sport-electric);
-            border-bottom-color: var(--sport-electric);
-        }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests">
+  <meta name="description" content="ZeePredict sample prediction interface. Demo data only, not current fixtures or betting advice. 18+.">
+  <title>ZeePredict | Demo predictions</title>
+  <link rel="stylesheet" href="style.css"><link rel="icon" href="logo.jpg" type="image/jpeg">
 </head>
-<body>
-    <div class="demo-banner" role="note" aria-label="Prototype notice">
-        <strong>Prototype notice:</strong> ZeePredict is an early-stage prototype. Every tip, date, result and statistic on this site is <strong>fictional sample data</strong> &mdash; not real predictions.
-    </div>
-
-    <header class="header">
-        <h1 class="logo-text"><img src="logo.jpg" alt="Zeepredict" class="logo-img"></h1>
-        <nav class="nav">
-            <a href="index.html">Home</a>
-            <a href="predictions.html">Predictions</a>
-        </nav>
-        <button class="theme-toggle" id="themeToggle" title="Toggle Dark/Light Mode" aria-label="Toggle theme">&#127769;</button>
-    </header>
-
-    <main class="container">
-        <h1 class="page-title">&#128202; Sample Predictions</h1>
-        <p class="page-subtitle">Browse sample records shown for layout demonstration. Nothing on this page is a real prediction, result or track record.</p>
-
-        <nav class="nav-tabs">
-            <a href="predictions.html" class="active">All</a>
-            <a href="game-of-the-day.html">Game of Day</a>
-            <a href="odds-5.html">5 Odds</a>
-            <a href="odds-10.html">10 Odds</a>
-            <a href="odds-50.html">50 Odds</a>
-        </nav>
-
-        <section id="predictions-list" aria-label="Sample predictions list"></section>
-    </main>
-
-    <footer class="site-footer">
-        <p><span class="sample-badge">DEMO DATA</span> All content on this site is fictional sample data. Strictly 18+. Please gamble responsibly.</p>
-        <p class="footer-links">
-            <a href="responsible-gaming.html">Responsible Gaming</a> &middot;
-            <a href="terms.html">Terms</a> &middot;
-            <a href="privacy.html">Privacy</a> &middot;
-            <a href="contact.html">Contact</a>
-        </p>
-        <p>&copy; 2026 Zeepredict. All rights reserved.</p>
-        <a class="social-link" href="https://x.com/Zeepredict" target="_blank" rel="noopener">
-          <svg class="social-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-          X
-        </a>
-        <a class="social-link" href="https://t.me/Zeepredict" target="_blank" rel="noopener" style="margin-left:16px">
-          <svg class="social-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
-          Telegram
-        </a>
-    </footer>
-
-    <!-- Shared scripts -->
-    <script src="predictions-data.js"></script>
-    <script src="utils.js"></script>
-    <script src="theme.js"></script>
-
-    <script>
-        function loadPredictions() {
-            var tips = window.PredictionDB.getTips();
-            var container = document.getElementById('predictions-list');
-            container.innerHTML = '';
-
-            if (tips.length === 0) {
-                container.innerHTML =
-                    '<div class="empty-state">' +
-                        '<p>No sample predictions yet.</p>' +
-                        '<a href="index.html" class="btn">Go to Home</a>' +
-                    '</div>';
-                return;
-            }
-
-            tips.forEach(function (tip) {
-                var card = document.createElement('article');
-                card.className = 'prediction-card';
-
-                var matchDate = tip.matchDate
-                    ? new Date(tip.matchDate).toLocaleString()
-                    : (tip.date ? new Date(tip.date).toLocaleDateString() : 'Sample date');
-
-                card.innerHTML =
-                    '<div class="league">' + ZeepredictUtils.escapeHtml(tip.league || 'Unknown League') + '</div>' +
-                    '<div class="match">' + ZeepredictUtils.escapeHtml(tip.match) + ' <span class="sample-badge">SAMPLE DATA</span></div>' +
-                    '<div class="match-time">' + matchDate + '</div>' +
-                    '<div class="prediction">Prediction: <strong>' + ZeepredictUtils.escapeHtml(tip.prediction) + '</strong></div>' +
-                    '<div class="odds">Odds: ' + ZeepredictUtils.escapeHtml(tip.odds) + '</div>' +
-                    '<div class="writeup">' + ZeepredictUtils.escapeHtml(tip.writeup) + '</div>';
-
-                container.appendChild(card);
-            });
-        }
-
-        window.addEventListener('DOMContentLoaded', loadPredictions);
-    </script>
+<body data-min-odds="0">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="header"><p class="logo-text"><a href="index.html"><img src="logo.jpg" alt="ZeePredict home" class="logo-img"></a></p><nav class="nav" aria-label="Primary"><a href="index.html">Home</a><a href="predictions.html" aria-current="page">Demo predictions</a></nav><button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle colour theme">&#127769;</button></header>
+  <p class="demo-banner" role="note"><strong>Demo only:</strong> every record below is fictional sample content. Nothing is live, verified or recommended. 18+.</p>
+  <main class="container" id="main">
+    <h1 class="page-title">Sample prediction interface</h1><p class="page-subtitle">Read-only product examples for testing layout and disclosure. There are no performance statistics or current tips.</p>
+    <nav class="nav-tabs" aria-label="Demo categories"><a href="predictions.html" aria-current="page">All samples</a><a href="game-of-the-day.html">Featured sample</a><a href="odds-5.html">4.0 to 6.49</a><a href="odds-10.html">6.5 to 14.99</a><a href="odds-50.html">15+</a></nav>
+    <aside class="responsible-notice"><p><strong>Important:</strong> Odds are fictional display values. Do not use this page to place a bet.</p></aside>
+    <section id="predictions-list" aria-label="Sample predictions"></section>
+  </main>
+  <footer class="site-footer"><p><span class="age-mark">18+</span> Use responsibly. Never stake money you cannot afford to lose.</p><nav class="footer-links" aria-label="Legal"><a href="responsible-use.html">Responsible use</a><a href="terms.html">Terms</a><a href="privacy.html">Privacy</a></nav><p>&copy; 2026 ZeePredict. Prototype, not a betting operator.</p></footer>
+  <script src="predictions-data.js"></script><script src="predictions-render.js"></script><script src="theme.js"></script>
 </body>
 </html>
