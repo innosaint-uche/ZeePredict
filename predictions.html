@@ -6,11 +6,14 @@
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests">
   <meta name="description" content="ZeePredict sample prediction interface. Demo data only, not current fixtures or betting advice. 18+.">
   <title>ZeePredict | Demo predictions</title>
-  <link rel="stylesheet" href="style.css"><link rel="icon" href="logo.jpg" type="image/jpeg">
+  <link rel="stylesheet" href="style.css">
+  <script src="theme.js"></script><link rel="icon" href="logo.jpg" type="image/jpeg">
+  <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#f8fafc" media="(prefers-color-scheme: light)">
 </head>
 <body data-min-odds="0">
   <a class="skip-link" href="#main">Skip to content</a>
-  <header class="header"><p class="logo-text"><a href="index.html"><img src="logo.jpg" alt="ZeePredict home" class="logo-img"></a></p><nav class="nav" aria-label="Primary"><a href="index.html">Home</a><a href="predictions.html" aria-current="page">Demo predictions</a></nav><button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle colour theme">&#127769;</button></header>
+  <header class="header"><p class="logo-text"><a href="index.html"><img src="logo.jpg" alt="ZeePredict home" class="logo-img" width="30" height="44"></a></p><nav class="nav" aria-label="Primary"><a href="index.html">Home</a><a href="predictions.html" aria-current="page">Demo predictions</a></nav><button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle colour theme">&#127769;</button></header>
   <p class="demo-banner" role="note"><strong>Demo only:</strong> every record below is fictional sample content. Nothing is live, verified or recommended. 18+.</p>
   <main class="container" id="main">
     <h1 class="page-title">Sample prediction interface</h1><p class="page-subtitle">Read-only product examples for testing layout and disclosure. There are no performance statistics or current tips.</p>
@@ -19,6 +22,6 @@
     <section id="predictions-list" aria-label="Sample predictions"></section>
   </main>
   <footer class="site-footer"><p><span class="age-mark">18+</span> Use responsibly. Never stake money you cannot afford to lose.</p><nav class="footer-links" aria-label="Legal"><a href="responsible-use.html">Responsible use</a><a href="terms.html">Terms</a><a href="privacy.html">Privacy</a></nav><p>&copy; 2026 ZeePredict. Prototype, not a betting operator.</p></footer>
-  <script src="predictions-data.js"></script><script src="predictions-render.js"></script><script src="theme.js"></script>
+  <script src="predictions-data.js"></script><script src="predictions-render.js"></script>
 </body>
 </html>
