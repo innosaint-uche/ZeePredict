@@ -54,6 +54,32 @@ body {
 
 img { max-width: 100%; display: block; }
 
+/* ---- Prototype Demo Banner ---- */
+.demo-banner {
+  background: repeating-linear-gradient(45deg, #7c2d12, #7c2d12 10px, #9a3412 10px, #9a3412 20px);
+  color: #fff7ed;
+  padding: 0.7rem 5%;
+  font-size: 0.9rem;
+  text-align: center;
+  border-bottom: 2px solid var(--sport-gold);
+}
+
+.demo-banner strong { color: #fde68a; }
+
+.sample-badge {
+  display: inline-block;
+  padding: 3px 8px;
+  background: rgba(251, 191, 36, 0.15);
+  color: var(--warning);
+  border: 1px dashed var(--warning);
+  border-radius: 4px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  margin-left: 8px;
+  vertical-align: middle;
+}
+
 /* ---- Header ---- */
 .header {
   background: var(--bg-secondary);
@@ -184,6 +210,20 @@ img { max-width: 100%; display: block; }
   font-size: 0.9rem;
   border-top: 1px solid var(--border);
   margin-top: auto;
+}
+
+.site-footer .footer-links {
+  margin: 0.5rem 0;
+}
+
+.site-footer .footer-links a {
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.site-footer .footer-links a:hover {
+  color: var(--accent);
 }
 
 .site-footer .social-link {
@@ -439,5 +479,9 @@ img { max-width: 100%; display: block; }
   }
   .stat-value {
     font-size: 1.5rem;
+  }
+  .demo-banner {
+    font-size: 0.8rem;
+    padding: 0.6rem 4%;
   }
 }

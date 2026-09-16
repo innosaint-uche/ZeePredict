@@ -1,11 +1,16 @@
 // Shared Client-Side Data Helper for Zeepredict
+//
+// PROTOTYPE STATE (CTO containment, 2026-09-16):
+// The records below are FICTIONAL SAMPLE DATA for layout demonstration only.
+// They are not real predictions and must not be presented as such.
+// Cloud sync (Firestore) has been REMOVED — the previous implementation had no
+// authentication, would corrupt data, and has been retired pending the Phase 1
+// server-side rebuild. Do not reintroduce client-side cloud writes.
 
-// Generates dynamic dates relative to today
-var getRelativeDateStr = function(daysAgo) {
-    var d = new Date();
-    d.setDate(d.getDate() - daysAgo);
-    return d.toISOString();
-};
+// Fixed sample date. This previously generated dates relative to the visitor's
+// current day, which made fictional records appear current. Do NOT reintroduce
+// dynamic dating until real fixture data exists.
+var SAMPLE_DATE = '2026-01-15T12:00:00.000Z';
 
 // Migrate old localStorage data to new format (runs once)
 (function migrateOldData() {
@@ -34,9 +39,8 @@ var SEED_TIPS = [
         prediction: "Over 2.5 Goals",
         odds: "1.65",
         league: "Premier League",
-        writeup: "Both teams boast incredible attacking output while showing vulnerability in transition. Villa's high defensive line will be tested by Salah's pace, leading to a high-scoring game at Anfield.",
-        date: getRelativeDateStr(0), // Today
-        status: "Pending"
+        writeup: "SAMPLE DATA - fictional write-up for layout demonstration. Both teams boast incredible attacking output while showing vulnerability in transition.",
+        date: SAMPLE_DATE
     },
     {
         id: "seed-2",
@@ -44,9 +48,8 @@ var SEED_TIPS = [
         prediction: "Inter Milan Win",
         odds: "1.95",
         league: "Serie A",
-        writeup: "Inter has dominated the recent Derby della Madonnina matchups. Their midfield superiority and tactical cohesion give them a major advantage over Milan, who are struggling with defensive consistency.",
-        date: getRelativeDateStr(0), // Today
-        status: "Pending"
+        writeup: "SAMPLE DATA - fictional write-up for layout demonstration. Inter has dominated the recent Derby della Madonnina matchups.",
+        date: SAMPLE_DATE
     },
     {
         id: "seed-3",
@@ -54,9 +57,8 @@ var SEED_TIPS = [
         prediction: "Bayern Win & BTTS",
         odds: "2.40",
         league: "Bundesliga",
-        writeup: "Der Klassiker at the Allianz Arena historically promises goals. Bayern's attacking fluidity at home is unmatched, but Dortmund's recent scoring streak ensures they will get on the scoresheet.",
-        date: getRelativeDateStr(0), // Today
-        status: "Pending"
+        writeup: "SAMPLE DATA - fictional write-up for layout demonstration. Der Klassiker at the Allianz Arena historically promises goals.",
+        date: SAMPLE_DATE
     },
     {
         id: "seed-4",
@@ -64,9 +66,8 @@ var SEED_TIPS = [
         prediction: "Real Madrid Win",
         odds: "2.10",
         league: "La Liga",
-        writeup: "Real Madrid's form at the Bernabéu has been spectacular. With Barcelona suffering from key defensive suspensions, Madrid's counter-attacking speed led by Vinícius and Bellingham should prove decisive.",
-        date: getRelativeDateStr(1), // Yesterday
-        status: "Won"
+        writeup: "SAMPLE DATA - fictional write-up for layout demonstration. Real Madrid's form at the Bernabéu has been spectacular.",
+        date: SAMPLE_DATE
     },
     {
         id: "seed-5",
@@ -74,9 +75,8 @@ var SEED_TIPS = [
         prediction: "Man City Win",
         odds: "1.80",
         league: "Champions League",
-        writeup: "City has been formidable at home, maintaining an long unbeaten home run in Europe. With their controlled possession game, they are expected to choke out PSG's midfield and secure the victory.",
-        date: getRelativeDateStr(2), // 2 days ago
-        status: "Won"
+        writeup: "SAMPLE DATA - fictional write-up for layout demonstration. City has been formidable at home in Europe.",
+        date: SAMPLE_DATE
     },
     {
         id: "seed-6",
@@ -84,9 +84,8 @@ var SEED_TIPS = [
         prediction: "Draw",
         odds: "3.40",
         league: "Premier League",
-        writeup: "London derbies are notoriously tight. Chelsea's defensive organization in big away games has improved, and Arsenal might find it hard to break them down, leading to a hard-fought draw.",
-        date: getRelativeDateStr(3), // 3 days ago
-        status: "Won"
+        writeup: "SAMPLE DATA - fictional write-up for layout demonstration. London derbies are notoriously tight.",
+        date: SAMPLE_DATE
     },
     {
         id: "seed-7",
@@ -94,9 +93,8 @@ var SEED_TIPS = [
         prediction: "Under 1.5 Goals",
         odds: "2.85",
         league: "Serie A",
-        writeup: "Both teams have played extremely defensive football in recent matches. Expect a highly tactical, cagey affair with minimal risks taken in front of goal.",
-        date: getRelativeDateStr(4), // 4 days ago
-        status: "Lost"
+        writeup: "SAMPLE DATA - fictional write-up for layout demonstration. Both teams have played extremely defensive football in recent matches.",
+        date: SAMPLE_DATE
     },
     // ===== 5 ODDS (4.0 - 6.5) =====
     {
@@ -105,9 +103,8 @@ var SEED_TIPS = [
         prediction: "Both Teams to Score & Over 2.5",
         odds: "4.50",
         league: "Premier League",
-        writeup: "Tottenham's high-press game against United's vulnerable backline guarantees goals. Both sides have been leaking chances, and with key attackers in form, this has all the makings of a goal-fest at the Tottenham Hotspur Stadium.",
-        date: getRelativeDateStr(0), // Today
-        status: "Pending"
+        writeup: "SAMPLE DATA - fictional write-up for layout demonstration. Tottenham's high-press game against United's vulnerable backline.",
+        date: SAMPLE_DATE
     },
     {
         id: "seed-9",
@@ -115,9 +112,8 @@ var SEED_TIPS = [
         prediction: "Roma Win & Over 1.5 Goals",
         odds: "5.00",
         league: "Serie A",
-        writeup: "The Derby della Capitale at the Stadio Olimpico is always fiercely contested. Roma's home form has been exceptional this season, and with Dybala pulling the strings in midfield, they should edge past their city rivals in a match that produces goals.",
-        date: getRelativeDateStr(0), // Today
-        status: "Pending"
+        writeup: "SAMPLE DATA - fictional write-up for layout demonstration. The Derby della Capitale at the Stadio Olimpico is always fiercely contested.",
+        date: SAMPLE_DATE
     },
     {
         id: "seed-10",
@@ -125,9 +121,8 @@ var SEED_TIPS = [
         prediction: "Draw No Bet - Benfica",
         odds: "5.80",
         league: "Primeira Liga",
-        writeup: "O Clássico in Portugal is often decided by fine margins. Benfica have been dominant at the Estádio da Luz, and with Porto struggling with injuries in defence, the Eagles have a strong chance to claim all three points.",
-        date: getRelativeDateStr(0), // Today
-        status: "Pending"
+        writeup: "SAMPLE DATA - fictional write-up for layout demonstration. O Clássico in Portugal is often decided by fine margins.",
+        date: SAMPLE_DATE
     },
     // ===== 10 ODDS (6.5 - 15.0) =====
     {
@@ -136,9 +131,8 @@ var SEED_TIPS = [
         prediction: "West Ham Double Chance & BTTS",
         odds: "8.50",
         league: "Premier League",
-        writeup: "West Ham at the London Stadium have proven to be giant killers this season. Liverpool's away form has been shaky, and with the Hammers' physical approach and set-piece threat, they can at least avoid defeat in a game where both sides score.",
-        date: getRelativeDateStr(0), // Today
-        status: "Pending"
+        writeup: "SAMPLE DATA - fictional write-up for layout demonstration. West Ham at the London Stadium have proven to be giant killers.",
+        date: SAMPLE_DATE
     },
     {
         id: "seed-12",
@@ -146,9 +140,8 @@ var SEED_TIPS = [
         prediction: "Lyon to Win",
         odds: "10.00",
         league: "Ligue 1",
-        writeup: "PSG's away record against top Ligue 1 sides has been unconvincing despite their star power. Lyon have built a formidable home record with their high-energy press, and catching PSG on an off day could yield a massive upset at the Groupama Stadium.",
-        date: getRelativeDateStr(1), // Yesterday
-        status: "Won"
+        writeup: "SAMPLE DATA - fictional write-up for layout demonstration. PSG's away record against top Ligue 1 sides has been unconvincing.",
+        date: SAMPLE_DATE
     },
     {
         id: "seed-13",
@@ -156,9 +149,8 @@ var SEED_TIPS = [
         prediction: "Sevilla Win & Under 3.5 Goals",
         odds: "12.00",
         league: "La Liga",
-        writeup: "The Ramón Sánchez Pizjuán is one of the toughest grounds in Spain. Sevilla's defensive organization under pressure has been elite, and Barcelona's recent struggles away from home against physical sides make this a prime candidate for a home upset.",
-        date: getRelativeDateStr(0), // Today
-        status: "Pending"
+        writeup: "SAMPLE DATA - fictional write-up for layout demonstration. The Ramón Sánchez Pizjuán is one of the toughest grounds in Spain.",
+        date: SAMPLE_DATE
     },
     {
         id: "seed-14",
@@ -166,9 +158,8 @@ var SEED_TIPS = [
         prediction: "Correct Score 2-1",
         odds: "14.00",
         league: "Eredivisie",
-        writeup: "De Klassieker always delivers drama. Ajax's attacking flair at the Johan Cruijff ArenA combined with Feyenoord's counter-attacking threat suggests a 2-1 scoreline is the most likely outcome in this historic rivalry.",
-        date: getRelativeDateStr(2), // 2 days ago
-        status: "Lost"
+        writeup: "SAMPLE DATA - fictional write-up for layout demonstration. De Klassieker always delivers drama.",
+        date: SAMPLE_DATE
     },
     // ===== 50+ ODDS (15.0+) =====
     {
@@ -177,9 +168,8 @@ var SEED_TIPS = [
         prediction: "Sheriff Tiraspol to Win",
         odds: "18.00",
         league: "Champions League",
-        writeup: "History has shown that Champions League nights can produce miracles. Sheriff's artificial turf and compact defensive setup have troubled top sides before. With Real Madrid having one eye on the weekend El Clásico, a shock result isn't out of the question.",
-        date: getRelativeDateStr(0), // Today
-        status: "Pending"
+        writeup: "SAMPLE DATA - fictional write-up for layout demonstration. Champions League nights can produce miracles.",
+        date: SAMPLE_DATE
     },
     {
         id: "seed-16",
@@ -187,9 +177,8 @@ var SEED_TIPS = [
         prediction: "Accra Lions to Win 3-0",
         odds: "25.00",
         league: "Ghana Premier League",
-        writeup: "Accra Lions have been unbeaten at home for months, dominating possession and creating numerous chances. Kotoko's travel fatigue and defensive injuries could lead to a comprehensive home victory with a clean sheet.",
-        date: getRelativeDateStr(0), // Today
-        status: "Pending"
+        writeup: "SAMPLE DATA - fictional write-up for layout demonstration. Accra Lions have been unbeaten at home for months.",
+        date: SAMPLE_DATE
     },
     {
         id: "seed-17",
@@ -197,9 +186,8 @@ var SEED_TIPS = [
         prediction: "St. Pauli Double Chance & BTTS",
         odds: "35.00",
         league: "Bundesliga",
-        writeup: "The Millerntor Stadium is a fortress where bigger teams have struggled. St. Pauli's passionate home crowd and aggressive pressing style could trouble a Bayern side that often rotates ahead of Champions League fixtures.",
-        date: getRelativeDateStr(3), // 3 days ago
-        status: "Lost"
+        writeup: "SAMPLE DATA - fictional write-up for layout demonstration. The Millerntor Stadium is a fortress.",
+        date: SAMPLE_DATE
     },
     {
         id: "seed-18",
@@ -207,23 +195,19 @@ var SEED_TIPS = [
         prediction: "Cork City to Win 2-0",
         odds: "50.00",
         league: "League of Ireland",
-        writeup: "Cork City's recent form at Turner's Cross has been incredible, keeping four consecutive clean sheets. Shamrock Rovers are in a poor run of form, and the home advantage combined with Cork's defensive solidity could produce a surprise result.",
-        date: getRelativeDateStr(0), // Today
-        status: "Pending"
+        writeup: "SAMPLE DATA - fictional write-up for layout demonstration. Cork City's recent form at Turner's Cross has been incredible.",
+        date: SAMPLE_DATE
     }
 ];
 
-// Load overrides and user tips from localStorage
+// Load overrides and user tips from localStorage (browser-local only; there is
+// intentionally no cloud sync in this prototype build)
 function getSeedOverrides() {
     return JSON.parse(localStorage.getItem('zeepredict_seed_overrides') || '{}');
 }
 
 function saveSeedOverrides(overrides) {
     localStorage.setItem('zeepredict_seed_overrides', JSON.stringify(overrides));
-    // Sync to Firebase if available
-    if (typeof ZEESync !== 'undefined') {
-        ZEESync.saveToCloud([{ id: '__seed_overrides', data: overrides }]);
-    }
 }
 
 function getDeletedSeeds() {
@@ -232,10 +216,6 @@ function getDeletedSeeds() {
 
 function saveDeletedSeeds(deleted) {
     localStorage.setItem('zeepredict_deleted_seeds', JSON.stringify(deleted));
-    // Sync to Firebase if available
-    if (typeof ZEESync !== 'undefined') {
-        ZEESync.saveToCloud([{ id: '__deleted_seeds', data: deleted }]);
-    }
 }
 
 function getUserTips() {
@@ -244,12 +224,6 @@ function getUserTips() {
 
 function saveUserTips(tips) {
     localStorage.setItem('zeepredict_user_tips', JSON.stringify(tips));
-    // Sync to Firebase if available
-    if (typeof ZEESync !== 'undefined') {
-        ZEESync.saveToCloud(tips.filter(function(t) {
-            return t.id && !t.id.startsWith('seed-');
-        }));
-    }
 }
 
 // Expose public API functions
@@ -272,7 +246,7 @@ window.PredictionDB = {
         return [...userTips, ...processedSeeds].sort((a, b) => new Date(b.date) - new Date(a.date));
     },
 
-    // Add a new tip (always user tip)
+    // Add a new tip (browser-local only)
     addTip: function(tipData) {
         var userTips = getUserTips();
         var newTip = {
@@ -291,7 +265,7 @@ window.PredictionDB = {
         return newTip;
     },
 
-    // Delete a tip
+    // Delete a tip (browser-local only)
     deleteTip: function(id) {
         if (id.startsWith('seed-')) {
             // Add to deleted seeds list
@@ -308,7 +282,8 @@ window.PredictionDB = {
         }
     },
 
-    // Update status (Won, Lost, Pending)
+    // Update status (Won, Lost, Pending) - retained for API compatibility,
+    // but no public page displays statuses in this prototype build
     updateTipStatus: function(id, status) {
         if (id.startsWith('seed-')) {
             const overrides = getSeedOverrides();
@@ -323,63 +298,5 @@ window.PredictionDB = {
                 saveUserTips(userTips);
             }
         }
-    },
-
-    // Get win rate statistics
-    getWinRateStats: function() {
-        const allTips = this.getTips();
-        const resolvedTips = allTips.filter(t => t.status === 'Won' || t.status === 'Lost');
-        const wonTips = resolvedTips.filter(t => t.status === 'Won');
-
-        const totalTips = allTips.length;
-        const resolvedCount = resolvedTips.length;
-        const wonCount = wonTips.length;
-        const winRate = resolvedCount > 0 ? Math.round((wonCount / resolvedCount) * 100) : 0;
-
-        // Calculate average odds of all tips
-        const totalOdds = allTips.reduce((sum, t) => sum + parseFloat(t.odds || 1), 0);
-        const avgOdds = totalTips > 0 ? (totalOdds / totalTips).toFixed(2) : '0.00';
-
-        return {
-            totalTips,
-            winRate,
-            resolvedCount,
-            wonCount,
-            avgOdds
-        };
-    },
-
-    // Sync user tips from Firebase to localStorage
-    syncFromCloud: function(callback) {
-        if (typeof ZEESync === 'undefined' || !ZEEPredictFirebase.initialized) {
-            if (callback) callback(false);
-            return;
-        }
-        ZEESync.loadFromCloud(function(cloudTips) {
-            if (cloudTips && cloudTips.length > 0) {
-                // Merge cloud tips with existing (cloud wins on conflict)
-                var localTips = getUserTips();
-                var cloudIds = {};
-                cloudTips.forEach(function(t) { cloudIds[t.id] = t; });
-                
-                // Keep local tips that don't exist in cloud
-                var merged = cloudTips.slice();
-                localTips.forEach(function(t) {
-                    if (!cloudIds[t.id]) merged.push(t);
-                });
-                
-                saveUserTips(merged);
-                if (callback) callback(true);
-            } else {
-                if (callback) callback(false);
-            }
-        });
     }
 };
-
-// Initialize Firebase on page load
-(function() {
-    if (typeof initFirebase !== 'undefined') {
-        initFirebase();
-    }
-})();
