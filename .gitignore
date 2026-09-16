@@ -1,2 +1,6 @@
-skills/
 node_modules/
+skills/
+.env
+.env.*
+!.env.example
+.DS_Store
