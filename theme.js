@@ -27,6 +27,7 @@
             btn.textContent = isLight ? '\u2600\uFE0F' : '\uD83C\uDF19';
             btn.setAttribute('aria-pressed', String(isLight));
             btn.setAttribute('aria-label', isLight ? 'Switch to dark theme' : 'Switch to light theme');
+            btn.setAttribute('title', isLight ? 'Switch to dark theme' : 'Switch to light theme');
         }
     }
 
@@ -41,6 +42,8 @@
         btn.addEventListener('click', function () {
             setTheme(!document.documentElement.classList.contains('light-mode'));
         });
+        // Now that the DOM is definitely loaded, ensure attributes are set.
+        apply(document.documentElement.classList.contains('light-mode'));
     }
 
     // Apply before first paint to avoid a theme flash.
